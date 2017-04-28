@@ -1,0 +1,51 @@
+#! /bin/sh
+
+# download - resucrively downloads from a server to the local 
+# container. The following environment variables are required:
+#   - LOCAL_PATH
+#   - REMOTE_SERVER
+#   - REMOTE_PATH
+#   - USERNAME
+#   - PASSWORD
+
+# Copyright 2017 Toolhouse, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+lftp -u "$USERNAME","$PASSWORD" $REMOTE_SERVER <<EOF
+debug;
+set cmd:fail-exit yes;
+
+set net:limit-rate $NET_LIMIT_RATE;
+set net:limit-max $NET_LIMIT_MAX;
+set net:limit-total-rate $NET_LIMIT_TOTAL_RATE;
+set net:limit-total-max $NET_LIMIT_TOTAL_MAX;
+
+set net:timeout $NET_TIMEOUT;
+set net:reconnect-interval-base $NET_RECONNECT_INTERVAL_BASE;
+set net:reconnect-interval-multiplier $NET_RECONNECT_INTERVAL_MULTIPLIER;
+set net:max-retries $NET_MAX_RETRIES;
+set net:persist-retries $NET_PERSIST_RETRIES;
+
+set mirror:parallel-directories $MIRROR_PARALLEL_DIRECTORIES;
+set mirror:parallel-transfer-count $MIRROR_PARALLEL_TRANSFER_COUNT;
+set mirror:set-permissions $MIRROR_SET_PERMISSIONS;
+
+set sftp:auto-confirm $SFTP_AUTO_CONFIRM;
+set sftp:max-packets-in-flight $SFTP_MAX_PACKETS_IN_FLIGHT;
+set sftp:protocol-version $SFTP_PROTOCOL_VERSION;
+set sftp:server-program $SFTP_SERVER_PROGRAM;
+
+mirror --no-perms $LOCAL_PATH $REMOTE_PATH;
+exit;
+EOF
