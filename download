@@ -26,15 +26,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+. /_func
+
 cd "$LOCAL_PATH" || exit 1
 
 DEBUG_STATEMENT=""
-if [ "$DEBUG" != "" ]; then
+if parse_bool "$DEBUG"; then
     DEBUG_STATEMENT=debug;
 fi
 
 DELETE_ARG=""
-if [ "$DELETE_FILES" != "" ]; then
+if parse_bool "$DELETE_FILES"; then
+    echo "Warning: This will delete files at destination that are not present at the source. To disable this behavior, set DELETE_FILES=false"
     DELETE_ARG=--delete
 fi
 

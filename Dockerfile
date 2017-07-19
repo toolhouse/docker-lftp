@@ -46,6 +46,7 @@ ENV SFTP_MAX_PACKETS_IN_FLIGHT         16
 ENV SFTP_PROTOCOL_VERSION               6
 ENV SFTP_SERVER_PROGRAM              sftp
 
+ADD ./_func    /_func
 ADD ./help     /help
 ADD ./upload   /upload
 ADD ./download /download
