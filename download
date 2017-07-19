@@ -22,6 +22,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+cd "$LOCAL_PATH" || exit 1
+
 lftp -u "$USERNAME","$PASSWORD" $REMOTE_SERVER <<EOF
 debug;
 set cmd:fail-exit yes;
@@ -46,6 +48,7 @@ set sftp:max-packets-in-flight $SFTP_MAX_PACKETS_IN_FLIGHT;
 set sftp:protocol-version $SFTP_PROTOCOL_VERSION;
 set sftp:server-program $SFTP_SERVER_PROGRAM;
 
-mirror --no-perms $LOCAL_PATH $REMOTE_PATH;
+cd $REMOTE_PATH;
+mirror --no-perms;
 exit;
 EOF
