@@ -1,13 +1,16 @@
 #! /bin/sh
 
-# upload - resucrively uploads file(s) to a remote server. The 
+# upload - recursively uploads file(s) to a remote server. The
 # following environment variables are required:
 #   - LOCAL_PATH
 #   - REMOTE_SERVER
 #   - REMOTE_PATH
 #   - USERNAME
 #   - PASSWORD
+#
+# The following environment variables are optional:
 #   - DEBUG
+#   - DELETE_FILES
 
 # Copyright 2017 Toolhouse, Inc.
 #
@@ -28,6 +31,11 @@ cd "$LOCAL_PATH" || exit 1
 DEBUG_STATEMENT=""
 if [ "$DEBUG" != "" ]; then
     DEBUG_STATEMENT=debug;
+fi
+
+DELETE_ARG=""
+if [ "$DELETE_FILES" != "" ]; then
+    DELETE_ARG=--delete
 fi
 
 lftp -u "$USERNAME","$PASSWORD" $REMOTE_SERVER <<EOF
@@ -56,6 +64,6 @@ set sftp:protocol-version $SFTP_PROTOCOL_VERSION;
 set sftp:server-program $SFTP_SERVER_PROGRAM;
 
 cd $REMOTE_PATH;
-mirror --no-perms --delete --reverse;
+mirror --no-perms $DELETE_ARG --reverse;
 exit;
 EOF
