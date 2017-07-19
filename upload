@@ -56,6 +56,6 @@ set sftp:protocol-version $SFTP_PROTOCOL_VERSION;
 set sftp:server-program $SFTP_SERVER_PROGRAM;
 
 cd $REMOTE_PATH;
-mirror --no-perms --delete -R;
+mirror --no-perms --delete --reverse;
 exit;
 EOF
