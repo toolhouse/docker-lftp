@@ -7,6 +7,7 @@
 #   - REMOTE_PATH
 #   - USERNAME
 #   - PASSWORD
+#   - DEBUG
 
 # Copyright 2017 Toolhouse, Inc.
 #
@@ -24,8 +25,14 @@
 
 cd "$LOCAL_PATH" || exit 1
 
+DEBUG_STATEMENT=""
+if [ "$DEBUG" != "" ]; then
+    DEBUG_STATEMENT=debug;
+fi
+
 lftp -u "$USERNAME","$PASSWORD" $REMOTE_SERVER <<EOF
-debug;
+$DEBUG_STATEMENT
+
 set cmd:fail-exit yes;
 
 set net:limit-rate $NET_LIMIT_RATE;

@@ -33,13 +33,13 @@ will be uploaded to the remote server.
 
 The following environment variables are used for configuration:
 
-|     Variable    |             Description             |        Example         |
-|-----------------|-------------------------------------|------------------------|
-| `REMOTE_SERVER` | The URL                             | sftp://ftp.example.com |
-| `USERNAME`      | The username for the remote server. | kentclark              |
-| `PASSWORD`      | The password for the remote server. | superman               |
-| `REMOTE_PATH`   | The remote path                     | /home/kentclark/files  |
-
+|     Variable    |               Description                |        Example         |
+|-----------------|------------------------------------------|------------------------|
+| `REMOTE_SERVER` | The URL                                  | sftp://ftp.example.com |
+| `USERNAME`      | The username for the remote server.      | kentclark              |
+| `PASSWORD`      | The password for the remote server.      | superman               |
+| `REMOTE_PATH`   | The remote path                          | /home/kentclark/files  |
+| `DEBUG`         | Whether to produce verbose debug output. | true                   |
 
 ### Examples
 
@@ -51,6 +51,7 @@ docker run --rm \
            --env USERNAME="kentclark" \
            --env PASSWORD="superman" \
            --env REMOTE_PATH="/remote/path/to/download" \
+           --env DEBUG=true \
            --volume "/local/path/to/save/files":/files \
            toolhouse/lftp:v0.1.0 /download
 ```
@@ -63,6 +64,7 @@ docker run --rm \
            --env USERNAME="kentclark" \
            --env PASSWORD="superman" \
            --env REMOTE_PATH="/remote/to/files" \
+           --env DEBUG=true \
            --volume "/local/path/to/upload/files":/files \
            toolhouse/lftp:v0.1.0 /download
 ```
