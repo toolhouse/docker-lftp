@@ -1,6 +1,6 @@
-FROM alpine:3.5
+FROM alpine:3.6
 
-ENV LFTP_VERSION 4.7.4-r0
+ENV LFTP_VERSION 4.7.7-r2
 RUN apk --no-cache add ca-certificates openssh lftp=$LFTP_VERSION 
 
 # Labels: http://label-schema.org
