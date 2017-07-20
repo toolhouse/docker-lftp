@@ -55,7 +55,7 @@ docker run --rm \
            --env DEBUG=true \
            --env DELETE_FILES=true \
            --volume "/local/path/to/save/files":/files \
-           toolhouse/lftp:v0.1.0 /download
+           toolhouse/lftp:v0.2.0 /download
 ```
 
 #### Uploading
@@ -69,5 +69,5 @@ docker run --rm \
            --env DEBUG=true \
            --env DELETE_FILES=true \
            --volume "/local/path/to/upload/files":/files \
-           toolhouse/lftp:v0.1.0 /download
+           toolhouse/lftp:v0.2.0 /download
 ```
