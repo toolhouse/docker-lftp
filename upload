@@ -1,12 +1,16 @@
 #! /bin/sh
 
-# upload - resucrively uploads file(s) to a remote server. The 
+# upload - recursively uploads file(s) to a remote server. The
 # following environment variables are required:
 #   - LOCAL_PATH
 #   - REMOTE_SERVER
 #   - REMOTE_PATH
 #   - USERNAME
 #   - PASSWORD
+#
+# The following environment variables are optional:
+#   - DEBUG
+#   - DELETE_FILES
 
 # Copyright 2017 Toolhouse, Inc.
 #
@@ -22,10 +26,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+. /_func
+
 cd "$LOCAL_PATH" || exit 1
 
+DEBUG_STATEMENT=""
+if parse_bool "$DEBUG"; then
+    DEBUG_STATEMENT=debug;
+fi
+
+DELETE_ARG=""
+if parse_bool "$DELETE_FILES"; then
+    echo "Warning: This will delete files at destination that are not present at the source. To disable this behavior, set DELETE_FILES=false"
+    DELETE_ARG=--delete
+fi
+
 lftp -u "$USERNAME","$PASSWORD" $REMOTE_SERVER <<EOF
-debug;
+$DEBUG_STATEMENT
+
 set cmd:fail-exit yes;
 
 set net:limit-rate $NET_LIMIT_RATE;
@@ -49,6 +67,6 @@ set sftp:protocol-version $SFTP_PROTOCOL_VERSION;
 set sftp:server-program $SFTP_SERVER_PROGRAM;
 
 cd $REMOTE_PATH;
-mirror --no-perms --delete -R;
+mirror --no-perms $DELETE_ARG --reverse;
 exit;
 EOF

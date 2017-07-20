@@ -33,13 +33,14 @@ will be uploaded to the remote server.
 
 The following environment variables are used for configuration:
 
-|     Variable    |             Description             |        Example         |
-|-----------------|-------------------------------------|------------------------|
-| `REMOTE_SERVER` | The URL                             | sftp://ftp.example.com |
-| `USERNAME`      | The username for the remote server. | kentclark              |
-| `PASSWORD`      | The password for the remote server. | superman               |
-| `REMOTE_PATH`   | The remote path                     | /home/kentclark/files  |
-
+|     Variable    |                              Description                               |        Example         |
+|-----------------|------------------------------------------------------------------------|------------------------|
+| `REMOTE_SERVER` | The URL                                                                | sftp://ftp.example.com |
+| `USERNAME`      | The username for the remote server.                                    | kentclark              |
+| `PASSWORD`      | The password for the remote server.                                    | superman               |
+| `REMOTE_PATH`   | The remote path                                                        | /home/kentclark/files  |
+| `DEBUG`         | Whether to produce verbose debug output.                               | true                   |
+| `DELETE_FILES`  | Whether to delete files in destination that are not present in source. | true                       |
 
 ### Examples
 
@@ -51,6 +52,8 @@ docker run --rm \
            --env USERNAME="kentclark" \
            --env PASSWORD="superman" \
            --env REMOTE_PATH="/remote/path/to/download" \
+           --env DEBUG=true \
+           --env DELETE_FILES=true \
            --volume "/local/path/to/save/files":/files \
            toolhouse/lftp:v0.1.0 /download
 ```
@@ -63,6 +66,8 @@ docker run --rm \
            --env USERNAME="kentclark" \
            --env PASSWORD="superman" \
            --env REMOTE_PATH="/remote/to/files" \
+           --env DEBUG=true \
+           --env DELETE_FILES=true \
            --volume "/local/path/to/upload/files":/files \
            toolhouse/lftp:v0.1.0 /download
 ```
