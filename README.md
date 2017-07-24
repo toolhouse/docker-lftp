@@ -1,5 +1,7 @@
 # Docker LFTP
 
+[![](https://images.microbadger.com/badges/image/toolhouse/lftp.svg)](https://microbadger.com/images/toolhouse/lftp "Image Layers") [![](https://images.microbadger.com/badges/version/toolhouse/lftp.svg)](https://microbadger.com/images/toolhouse/lftp "Image Version")
+
 Upload/download files to a remote server via Docker.
 
 ## Status
