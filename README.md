@@ -44,6 +44,8 @@ The following environment variables are used for configuration:
 
 ### Examples
 
+_Note: The examples below use the `latest` Docker tag. We recommend using an image tagged with a version number._
+
 #### Downloading
 
 ```shell
@@ -55,7 +57,7 @@ docker run --rm \
            --env DEBUG=true \
            --env DELETE_FILES=true \
            --volume "/local/path/to/save/files":/files \
-           toolhouse/lftp:v0.2.0 /download
+           toolhouse/lftp:latest /download
 ```
 
 #### Uploading
@@ -69,5 +71,5 @@ docker run --rm \
            --env DEBUG=true \
            --env DELETE_FILES=true \
            --volume "/local/path/to/upload/files":/files \
-           toolhouse/lftp:v0.2.0 /download
+           toolhouse/lftp:latest /download
 ```
