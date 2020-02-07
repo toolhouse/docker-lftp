@@ -29,6 +29,7 @@ VOLUME ["$LOCAL_PATH"]
 
 # The following variables have reasonable defaults that 
 # can be overriden if necessary:
+ENV INSECURE_SKIP_SSL_VERIFICATION  false
 ENV NET_LIMIT_RATE                      0
 ENV NET_LIMIT_MAX                       0
 ENV NET_LIMIT_TOTAL_RATE                0
