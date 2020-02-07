@@ -1,9 +1,9 @@
-ARG ALPINE_VERSION=3.6
+ARG ALPINE_VERSION=3.11.3
 
 FROM alpine:${ALPINE_VERSION}
 
-ARG LFTP_VERSION=4.7.7-r2
-RUN apk --no-cache add ca-certificates openssh lftp=${LFTP_VERSION}
+ARG LFTP_VERSION=4.8.4-r2
+RUN apk --no-cache add ca-certificates openssh lftp
 
 # Labels: http://label-schema.org
 ARG BUILD_DATE
