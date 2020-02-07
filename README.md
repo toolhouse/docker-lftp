@@ -35,15 +35,15 @@ will be uploaded to the remote server.
 
 The following environment variables are used for configuration:
 
-|     Variable    |                              Description                               |        Example         |
-|-----------------|------------------------------------------------------------------------|------------------------|
-| `REMOTE_SERVER` | The URL                                                                | sftp://ftp.example.com |
-| `USERNAME`      | The username for the remote server.                                    | kentclark              |
-| `PASSWORD`      | The password for the remote server.                                    | superman               |
-| `REMOTE_PATH`   | The remote path                                                        | /home/kentclark/files  |
-| `DEBUG`         | Whether to produce verbose debug output.                               | true                   |
-| `DELETE_FILES`  | Whether to delete files in destination that are not present in source. | true                       |
-| `INSECURE_SKIP_SSL_VERIFICATION` | When set to true, SSL certificate validation will be skipped. | false                  |
+| Variable                         | Description                                                            | Example                |
+| -------------------------------- | ---------------------------------------------------------------------- | ---------------------- |
+| `REMOTE_SERVER`                  | The URL                                                                | sftp://ftp.example.com |
+| `USERNAME`                       | The username for the remote server.                                    | kentclark              |
+| `PASSWORD`                       | The password for the remote server.                                    | superman               |
+| `REMOTE_PATH`                    | The remote path                                                        | /home/kentclark/files  |
+| `DEBUG`                          | Whether to produce verbose debug output.                               | true                   |
+| `DELETE_FILES`                   | Whether to delete files in destination that are not present in source. | true                   |
+| `INSECURE_SKIP_SSL_VERIFICATION` | When set to true, SSL certificate validation will be skipped.          | false                  |
 
 ### Examples
 
