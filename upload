@@ -79,6 +79,7 @@ set sftp:max-packets-in-flight $SFTP_MAX_PACKETS_IN_FLIGHT;
 set sftp:protocol-version $SFTP_PROTOCOL_VERSION;
 set sftp:server-program $SFTP_SERVER_PROGRAM;
 
+mkdir -p -f $REMOTE_PATH;
 cd $REMOTE_PATH;
 mirror --no-perms $DELETE_ARG $EXCLUDE_ARG --reverse;
 exit;
