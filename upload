@@ -42,6 +42,12 @@ if parse_bool "$INSECURE_SKIP_SSL_VERIFICATION"; then
     SSL_VERIFY_STATEMENT="set ssl:verify-certificate false;"
 fi
 
+CREATE_REMOTE_DIR_CMD=""
+if parse_bool "$CREATE_REMOTE_DIR"; then
+    CREATE_REMOTE_DIR_CMD="mkdir -p -f $REMOTE_PATH;"
+fi
+
+
 DELETE_ARG=""
 if parse_bool "$DELETE_FILES"; then
     echo "Warning: This will delete files at destination that are not present at the source. To disable this behavior, set DELETE_FILES=false"
@@ -79,7 +85,7 @@ set sftp:max-packets-in-flight $SFTP_MAX_PACKETS_IN_FLIGHT;
 set sftp:protocol-version $SFTP_PROTOCOL_VERSION;
 set sftp:server-program $SFTP_SERVER_PROGRAM;
 
-mkdir -p -f $REMOTE_PATH;
+$CREATE_REMOTE_DIR_CMD
 cd $REMOTE_PATH;
 mirror --no-perms $DELETE_ARG $EXCLUDE_ARG --reverse;
 exit;

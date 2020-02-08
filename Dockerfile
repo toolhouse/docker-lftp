@@ -44,7 +44,6 @@ VOLUME ["$LOCAL_PATH"]
 
 # The following variables have reasonable defaults that 
 # can be overriden if necessary:
-ENV INSECURE_SKIP_SSL_VERIFICATION  false
 ENV NET_LIMIT_RATE                      0
 ENV NET_LIMIT_MAX                       0
 ENV NET_LIMIT_TOTAL_RATE                0
@@ -58,6 +57,9 @@ ENV NET_PERSIST_RETRIES                 5
 ENV MIRROR_PARALLEL_DIRECTORIES      true
 ENV MIRROR_PARALLEL_TRANSFER_COUNT      3
 ENV MIRROR_SET_PERMISSIONS          false
+ENV CREATE_REMOTE_DIR_CMD           false
+
+ENV INSECURE_SKIP_SSL_VERIFICATION  false
 
 ENV SFTP_AUTO_CONFIRM                true
 ENV SFTP_MAX_PACKETS_IN_FLIGHT         16

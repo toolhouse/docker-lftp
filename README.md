@@ -41,6 +41,7 @@ The following environment variables are used for configuration:
 | `USERNAME`                       | The username for the remote server.                                    | kentclark              |
 | `PASSWORD`                       | The password for the remote server.                                    | superman               |
 | `REMOTE_PATH`                    | The remote path                                                        | /home/kentclark/files  |
+| `CREATE_REMOTE_DIR_CMD`          | The create the directory (`$REMOTE_PATH`) on the server (upload only). | true                   |
 | `DEBUG`                          | Whether to produce verbose debug output.                               | true                   |
 | `DELETE_FILES`                   | Whether to delete files in destination that are not present in source. | true                   |
 | `EXCLUDE_FILES`                  | A path to exclude from the ftp operation                               | subdir/                |
