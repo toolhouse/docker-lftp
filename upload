@@ -50,7 +50,6 @@ fi
 
 EXCLUDE_ARG=""
 if is_set "$EXCLUDE_FILES"; then
-echo "here!"
     EXCLUDE_ARG="--exclude $EXCLUDE_FILES"
 fi
 
