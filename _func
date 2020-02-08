@@ -21,3 +21,9 @@ parse_bool() {
     if [ "$ARG" = "off" ]; then return 1; fi
     if [ "$ARG" -eq 0 ] 2> /dev/null; then return 1; fi
 }
+
+# Checks if an environment variable is set
+# (wether or not it is an empty string)
+is_set() {
+    if [ -n "$1" ]; then return 0; else return 1; fi
+}
