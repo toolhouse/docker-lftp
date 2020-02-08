@@ -16,8 +16,9 @@ ARG ALPINE_VERSION=3.11.3
 
 FROM alpine:${ALPINE_VERSION}
 
-ARG LFTP_VERSION=4.8.4-r2
-RUN apk --no-cache add ca-certificates openssh lftp
+ARG LFTP_VERSION=4.9.1-r0
+RUN apk --no-cache add ca-certificates openssh
+RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main add lftp=${LFTP_VERSION}
 
 # Labels: http://label-schema.org
 ARG BUILD_DATE
