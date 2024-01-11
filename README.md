@@ -76,5 +76,5 @@ docker run --rm \
            --env DEBUG=true \
            --env DELETE_FILES=true \
            --volume "/local/path/to/upload/files":/files \
-           toolhouse/lftp:latest /download
+           toolhouse/lftp:latest /upload
 ```
